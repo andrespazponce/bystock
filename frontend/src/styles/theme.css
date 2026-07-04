@@ -1,0 +1,245 @@
+/* =========================================================================
+   Sistema de diseño — Portal de Gobierno Corporativo (INCERPAZ)
+   Paleta corporativa: navy profundo + dorado elegante.
+   ========================================================================= */
+
+:root,
+[data-theme='dark'] {
+  /* Navy — del más oscuro al más claro */
+  --bg:       #050d1a;   /* fondo app */
+  --surface:  #0f1f38;   /* tarjetas, sidebar */
+  --surface-2:#162845;   /* hover, inputs */
+
+  /* Borde con tinte dorado */
+  --border: rgba(201, 168, 76, 0.15);
+  --border-hover: rgba(201, 168, 76, 0.35);
+
+  /* Texto */
+  --text:       #f0ebe0;
+  --text-muted: #a8a090;
+
+  /* Dorado corporativo — escala completa */
+  --gold-300:   #e8c97a;
+  --gold-400:   #d4ad4f;
+  --gold:       #c9a84c;   /* principal (acentos, links) */
+  --gold-strong:#c9a84c;
+  --gold-600:   #a8883c;
+  --gold-soft:  rgba(201, 168, 76, 0.10);
+
+  /* Semánticos */
+  --danger:     #e05260;
+  --danger-bg:  rgba(224, 82, 96, 0.12);
+  --success:    #4caf7d;
+  --warning:    #d4a13a;
+  --info:       #5b9bd5;
+
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+  --radius: 8px;
+}
+
+[data-theme='light'] {
+  --bg:       #f6f5f1;
+  --surface:  #ffffff;
+  --surface-2:#efece4;
+  --border:   #e2ddd0;
+  --border-hover: #c9a84c;
+
+  --text:       #1c1c1c;
+  --text-muted: #6b6b6b;
+
+  --gold-300:   #9c7a23;
+  --gold-400:   #8a6c1e;
+  --gold:       #876618;
+  --gold-strong:#876618;
+  --gold-600:   #6e521a;
+  --gold-soft:  rgba(156, 122, 35, 0.10);
+
+  --danger:     #c0392b;
+  --danger-bg:  rgba(192, 57, 43, 0.08);
+  --success:    #1e7e4f;
+  --warning:    #b8860b;
+  --info:       #2a6fb0;
+
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  --radius: 8px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Tipografía serif — para títulos y marca */
+.serif {
+  font-family: Georgia, Cambria, 'Times New Roman', serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface-2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-600); }
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+button { font-family: inherit; }
+
+/* ── Componentes reutilizables ─────────────────────────────────────────────── */
+
+/* Tarjeta */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s;
+}
+.card:hover {
+  border-color: var(--border-hover);
+}
+
+/* Divisor dorado con degradado */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+  opacity: 0.35;
+  flex: 1;
+}
+
+/* Chip de tema / etiqueta */
+.topic-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  color: var(--gold-300);
+  background: rgba(201, 168, 76, 0.07);
+}
+
+/* Chip genérico */
+.chip {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  background: var(--gold-soft);
+  font-size: 0.85rem;
+}
+
+/* Botón dorado (acción principal) */
+.btn-gold {
+  background: var(--gold);
+  color: #1a1404;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.btn-gold:hover { background: var(--gold-300); }
+.btn-gold:disabled { opacity: 0.55; cursor: default; }
+
+/* Botón secundario (contorno) */
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.btn-ghost:disabled { opacity: 0.5; cursor: default; }
+
+/* Tabla */
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.tabla th {
+  text-align: left;
+  padding: 0.6rem 0.5rem;
+  border-bottom: 2px solid var(--border);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.tabla td {
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.tabla tr.clicable { cursor: pointer; }
+.tabla tr.clicable:hover td { background: var(--surface-2); }
+
+/* Inputs y selects */
+.input,
+.select {
+  padding: 0.5rem 0.7rem;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.input:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+/* Mensaje de error */
+.alert-error {
+  color: var(--danger);
+  background: var(--danger-bg);
+  padding: 0.6rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid var(--danger);
+}
+
+/* Etiqueta de sección superior */
+.section-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* Highlight de búsqueda */
+mark {
+  background: rgba(201, 168, 76, 0.3);
+  color: var(--gold-300);
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+/* Animación fade */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeInUp 0.35s ease forwards;
+}

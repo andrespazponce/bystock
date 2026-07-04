@@ -1,0 +1,11 @@
+{
+  "name": "bystock",
+  "version": "0.1.0",
+  "description": "Bystock - Sistema de Gestión Corporativo basado en corporación_incerpaz",
+  "private": true,
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "preview": "cd frontend && npm run preview"
+  }
+}

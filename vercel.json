@@ -1,0 +1,21 @@
+{
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist",
+  "installCommand": "npm install",
+  "ignoreCommand": "git diff --quiet HEAD~1 HEAD -- frontend/",
+  "framework": "vite",
+  "functions": {
+    "api/**/*.ts": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "env": {
+    "VITE_API_URL": "@vite_api_url"
+  },
+  "regions": ["sfo1"],
+  "github": {
+    "enabled": true,
+    "autoDeployOnPush": true,
+    "autoCreatePullRequestForPush": true
+  }
+}

@@ -1,0 +1,53 @@
+# ============================================================
+# docker-compose PRODUCCION
+# Uso: docker compose -f docker-compose.prod.yml up -d --build
+#
+# Diferencias con el dev:
+#   - Backend usa Gunicorn (no runserver)
+#   - Puerto backend solo accesible desde localhost (Nginx lo proxea)
+#   - Sin frontend container (React buildado y servido por Nginx en el host)
+#   - Sin pgAdmin (no exponer herramientas de administración en producción)
+#   - staticfiles y media como bind mounts para que Nginx los sirva
+# ============================================================
+
+services:
+  db:
+    image: postgres:16
+    env_file: .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d
+    ports:
+      - "127.0.0.1:5432:5432"          # solo accesible desde localhost
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - app_network
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+    entrypoint: ["sh", "/app/entrypoint.prod.sh"]
+    env_file: .env
+    volumes:
+      - ./backend/staticfiles:/app/staticfiles  # collectstatic → Nginx lo sirve
+      - ./backend/media:/app/media               # archivos subidos → Nginx lo sirve
+    ports:
+      - "127.0.0.1:8000:8000"          # solo accesible desde localhost
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app_network
+    restart: unless-stopped
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  postgres_data:

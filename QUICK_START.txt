@@ -1,0 +1,83 @@
+═══════════════════════════════════════════════════════════════════════════════
+                    BYSTOCK - QUICK START GUIDE
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ PROJECT STATUS: Ready for GitHub + Vercel
+
+═══════════════════════════════════════════════════════════════════════════════
+STEP 1: Push to GitHub (on your machine)
+═══════════════════════════════════════════════════════════════════════════════
+
+cd /path/to/bystock_new
+git init
+git config user.email "andrespazponce@gmail.com"
+git config user.name "Andres Paz"
+git add .
+git commit -m "Initial commit: Bystock project"
+git branch -M main
+git remote add origin https://github.com/TU_USUARIO/bystock.git
+git push -u origin main
+
+═══════════════════════════════════════════════════════════════════════════════
+STEP 2: Deploy to Vercel
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Go to vercel.com
+2. Click "New Project" → "Import Git Repository"
+3. Select "bystock" repository
+4. Vercel auto-detects build settings ✓
+5. Set environment variable:
+   VITE_API_URL = https://your-backend-api.com/api
+6. Click "Deploy"
+
+═══════════════════════════════════════════════════════════════════════════════
+STEP 3: Deploy Backend (Separately)
+═══════════════════════════════════════════════════════════════════════════════
+
+Options: Railway, Render, Heroku, Google Cloud Run
+
+After backend is live, update VITE_API_URL in Vercel Dashboard
+
+═══════════════════════════════════════════════════════════════════════════════
+LOCAL DEVELOPMENT
+═══════════════════════════════════════════════════════════════════════════════
+
+cp .env.example .env
+docker compose up --build -d
+
+Frontend: http://localhost:5173
+Backend:  http://localhost:8000
+Admin:    http://localhost:8000/admin
+
+═══════════════════════════════════════════════════════════════════════════════
+IMPORTANT FILES
+═══════════════════════════════════════════════════════════════════════════════
+
+README.md         - Project overview
+DEPLOYMENT.md     - Detailed deployment guide
+SETUP_FINAL.md    - Complete next steps
+vercel.json       - Vercel configuration
+.env.example      - Environment variables template
+
+═══════════════════════════════════════════════════════════════════════════════
+Architecture Overview
+═══════════════════════════════════════════════════════════════════════════════
+
+bystock/
+├── frontend/          → Deploy to Vercel
+│   ├── src/
+│   └── package.json
+├── backend/           → Deploy to Railway/Render/etc
+│   ├── manage.py
+│   └── requirements.txt
+├── docker-compose.yml → Local development
+├── vercel.json        → Vercel config
+└── DEPLOYMENT.md      → Full guide
+
+═══════════════════════════════════════════════════════════════════════════════
+QUESTIONS?
+═══════════════════════════════════════════════════════════════════════════════
+
+Read DEPLOYMENT.md for detailed instructions and troubleshooting.
+
+═══════════════════════════════════════════════════════════════════════════════
