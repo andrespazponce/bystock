@@ -167,7 +167,6 @@ export default function Layout({ children }: { children: ReactNode }) {
             title="Bystock"
             style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--gold-strong)', textDecoration: 'none' }}
           >
-            <MarcaIncerpaz size={26} />
             {!colapsado && (
               <span style={{ fontSize: '1.2rem', fontWeight: 700, letterSpacing: '0.05em' }}>BYSTOCK</span>
             )}
@@ -243,13 +242,12 @@ export default function Layout({ children }: { children: ReactNode }) {
             display: 'flex',
             flexDirection: 'column',
             gap: '0.15rem',
+            alignItems: colapsado ? 'center' : 'stretch',
           }}
         >
-          {!colapsado && (
-            <div style={{ padding: '0.6rem 0.65rem' }}>
-              <ThemeSwitcher />
-            </div>
-          )}
+          <div style={{ display: 'flex', justifyContent: colapsado ? 'center' : 'flex-start', padding: colapsado ? '0.3rem' : '0.6rem 0.65rem' }}>
+            <ThemeSwitcher />
+          </div>
 
           <NavLink
             to="/mi-cuenta"

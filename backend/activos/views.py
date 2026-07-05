@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, status, viewsets
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
 from .models import Activo, ActivoDocumento
@@ -14,9 +14,10 @@ class ActivoViewSet(viewsets.ModelViewSet):
     CRUD completo de activos.
     Filtra por empresa, categoría, tipo y estado.
     La acción /mapa/ devuelve solo los activos con coordenadas.
+    Acceso anónimo para lectura, autenticado para escritura/eliminación.
     """
 
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['empresa', 'categoria', 'tipo', 'estado']
     search_fields = ['nombre', 'direccion', 'placa', 'nro_serie', 'nro_catastral', 'ciudad', 'departamento']
@@ -58,9 +59,10 @@ class ActivoDocumentoViewSet(viewsets.ModelViewSet):
     GET    /api/activos-documentos/?activo=<id>  → lista docs del activo
     POST   /api/activos-documentos/              → subir doc (multipart)
     DELETE /api/activos-documentos/<id>/         → eliminar doc
+    Acceso anónimo permitido.
     """
 
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
     serializer_class = ActivoDocumentoSerializer
     http_method_names = ['get', 'post', 'delete', 'head', 'options']
 
