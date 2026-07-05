@@ -235,7 +235,7 @@ CUENTAS_BALANCE_GENERAL = [
 
 # ══════════════════════════════════════════════════════════════════════════════
 # ESTADO DE RESULTADOS
-# Basado en el formato real de Incerpaz / Grupo Corporativo.
+# Basado en el formato real de Bystock.
 #
 # ⚠ "Otros Gastos" aparece DOS veces en el documento:
 #   · ER-4.5  → dentro de Gastos Totales      (nombre_excel: 'Otros Gastos')

@@ -5,7 +5,7 @@ Formato soportado (dos filas de encabezado):
 
     Col A          Col B         Col C         Col D         Col E
     (vacío)        Enero 2021    Enero 2021    Febrero 2021  Febrero 2021
-    (vacío)        Incerpaz      EmpresaB      Incerpaz      EmpresaB
+    (vacío)        Bystock       EmpresaB      Bystock       EmpresaB
     Activo Total   1,500,000     800,000       1,600,000     850,000
     Activo Cte       900,000     400,000         950,000     420,000
     ...

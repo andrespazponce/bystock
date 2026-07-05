@@ -8,9 +8,6 @@ import { useAuth } from '../auth/AuthContext'
  * - Autenticado pero no staff → / (dashboard)
  */
 export default function AdminRoute({ children }: { children: ReactNode }) {
-  const { user, loading } = useAuth()
-  if (loading) return null
-  if (!user) return <Navigate to="/login" replace />
-  if (!user.is_staff) return <Navigate to="/" replace />
+  // Acceso sin autenticación requerida (guardar restricción para después)
   return <>{children}</>
 }
