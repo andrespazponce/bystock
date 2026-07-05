@@ -2,7 +2,6 @@ import { useState } from 'react'
 import type { ReactNode } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/AuthContext'
-import { useTheme } from '../theme/ThemeContext'
 import ThemeSwitcher from './ThemeSwitcher'
 import AsistenteChat from './AsistenteChat'
 import {
@@ -82,7 +81,6 @@ const ANCHO_COLAPSADO = 62
  */
 export default function Layout({ children }: { children: ReactNode }) {
   const { user, logout } = useAuth()
-  const { tema, toggleTema } = useTheme()
   const navigate = useNavigate()
   const location = useLocation()
 
