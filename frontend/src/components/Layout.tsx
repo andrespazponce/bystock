@@ -22,7 +22,6 @@ import {
   IconReuniones,
   IconSubir,
   IconUsuarios,
-  MarcaIncerpaz,
 } from './icons'
 
 /**
