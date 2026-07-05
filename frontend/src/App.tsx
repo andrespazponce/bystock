@@ -12,9 +12,7 @@ import ReunionDetalle from './pages/ReunionDetalle'
 import ReunionForm from './pages/ReunionForm'
 import OrdenDelDia from './pages/OrdenDelDia'
 import PuntoGestion from './pages/PuntoGestion'
-import GestionActa from './pages/GestionActa'
 import NuevaReunionDesdeConvocatoria from './pages/NuevaReunionDesdeConvocatoria'
-import NuevaActaDesdePDF from './pages/NuevaActaDesdePDF'
 import Asistencias from './pages/Asistencias'
 import Compromisos from './pages/Compromisos'
 import MisCompromisos from './pages/MisCompromisos'
@@ -64,14 +62,6 @@ function App() {
         }
       />
       <Route
-        path="/actas/nueva-desde-pdf"
-        element={
-          <ProtectedRoute>
-            <NuevaActaDesdePDF />
-          </ProtectedRoute>
-        }
-      />
-      <Route
         path="/reuniones/nueva"
         element={
           <ProtectedRoute>
@@ -100,14 +90,6 @@ function App() {
         element={
           <ProtectedRoute>
             <PuntoGestion />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/reuniones/:id/acta"
-        element={
-          <ProtectedRoute>
-            <GestionActa />
           </ProtectedRoute>
         }
       />

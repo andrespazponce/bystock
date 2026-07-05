@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/AuthContext'
 import { useTheme } from '../theme/ThemeContext'
+import ThemeSwitcher from './ThemeSwitcher'
 import AsistenteChat from './AsistenteChat'
 import {
   IconActivos,
@@ -32,8 +33,7 @@ import {
  */
 const MODULOS_BASE = [
   { clave: 'memoria', label: 'Memoria Corporativa', path: '/' as string | null, soloAdmin: false },
-  { clave: 'compliance', label: 'Compliance', path: null, soloAdmin: false },
-  { clave: 'paz-holding', label: 'Paz Holding', path: '/activos' as string | null, soloAdmin: false },
+  { clave: 'bienes-activos', label: 'Bienes y Activos', path: '/activos' as string | null, soloAdmin: false },
   { clave: 'finanzas', label: 'Finanzas Corporativas', path: '/finanzas' as string | null, soloAdmin: false },
   { clave: 'ajustes', label: 'Ajustes', path: '/ajustes' as string | null, soloAdmin: true },
 ]
@@ -48,8 +48,8 @@ const NAV_MEMORIA = [
   { to: '/buscar', label: 'Buscar', Icon: IconBuscar, end: false },
 ]
 
-/** Navegación del módulo Paz Holding (menú lateral). */
-const NAV_PAZ_HOLDING = [
+/** Navegación del módulo Bienes y Activos (menú lateral). */
+const NAV_BIENES_ACTIVOS = [
   { to: '/activos', label: 'Activos', Icon: IconActivos, end: true },
   { to: '/activos/mapa', label: 'Mapa', Icon: IconMapa, end: false },
 ]
@@ -90,20 +90,20 @@ export default function Layout({ children }: { children: ReactNode }) {
   const enAjustes  = location.pathname.startsWith('/ajustes')
   const enActivos  = location.pathname.startsWith('/activos')
   const enFinanzas = location.pathname.startsWith('/finanzas')
-  const moduloActivo = enAjustes ? 'ajustes' : enActivos ? 'paz-holding' : enFinanzas ? 'finanzas' : 'memoria'
+  const moduloActivo = enAjustes ? 'ajustes' : enActivos ? 'bienes-activos' : enFinanzas ? 'finanzas' : 'memoria'
 
   // Nav y etiqueta del módulo activo en el sidebar
   const navActual = enAjustes
     ? NAV_AJUSTES
     : enActivos
-    ? NAV_PAZ_HOLDING
+    ? NAV_BIENES_ACTIVOS
     : enFinanzas
     ? NAV_FINANZAS
     : NAV_MEMORIA
   const labelModulo = enAjustes
     ? 'Ajustes'
     : enActivos
-    ? 'Paz Holding'
+    ? 'Bienes y Activos'
     : enFinanzas
     ? 'Finanzas Corporativas'
     : 'Memoria Corporativa'
@@ -166,12 +166,12 @@ export default function Layout({ children }: { children: ReactNode }) {
           <NavLink
             to="/"
             className="serif"
-            title="INCERPAZ"
+            title="Bystock"
             style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--gold-strong)', textDecoration: 'none' }}
           >
             <MarcaIncerpaz size={26} />
             {!colapsado && (
-              <span style={{ fontSize: '1.2rem', fontWeight: 700, letterSpacing: '0.05em' }}>INCERPAZ</span>
+              <span style={{ fontSize: '1.2rem', fontWeight: 700, letterSpacing: '0.05em' }}>BYSTOCK</span>
             )}
           </NavLink>
           <button
@@ -236,7 +236,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           ))}
         </nav>
 
-        {/* Footer del sidebar: Ajustes + toggle de tema + mi cuenta */}
+        {/* Footer del sidebar: selector de tema + mi cuenta */}
         <div
           style={{
             marginTop: 'auto',
@@ -247,29 +247,11 @@ export default function Layout({ children }: { children: ReactNode }) {
             gap: '0.15rem',
           }}
         >
-          <button
-            onClick={toggleTema}
-            className="btn-ghost"
-            title={tema === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.7rem',
-              justifyContent: colapsado ? 'center' : 'flex-start',
-              padding: '0.6rem 0.65rem',
-              borderRadius: 8,
-              border: 'none',
-              width: '100%',
-              fontSize: '0.9rem',
-              color: 'var(--text-muted)',
-              background: 'transparent',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-            }}
-          >
-            {!colapsado && <span>{tema === 'dark' ? 'Modo claro' : 'Modo oscuro'}</span>}
-          </button>
+          {!colapsado && (
+            <div style={{ padding: '0.6rem 0.65rem' }}>
+              <ThemeSwitcher />
+            </div>
+          )}
 
           <NavLink
             to="/mi-cuenta"

@@ -4,7 +4,7 @@
    ========================================================================= */
 
 :root,
-[data-theme='dark'] {
+[data-theme='original'] {
   /* Navy — del más oscuro al más claro */
   --bg:       #050d1a;   /* fondo app */
   --surface:  #0f1f38;   /* tarjetas, sidebar */
@@ -37,31 +37,58 @@
   --radius: 8px;
 }
 
-[data-theme='light'] {
-  --bg:       #f6f5f1;
+[data-theme='professional'] {
+  --bg:       #f8f7f5;
   --surface:  #ffffff;
-  --surface-2:#efece4;
-  --border:   #e2ddd0;
+  --surface-2:#f0ede8;
+  --border:   #d4ad4f;
   --border-hover: #c9a84c;
 
-  --text:       #1c1c1c;
-  --text-muted: #6b6b6b;
+  --text:       #1a1a1a;
+  --text-muted: #5a5a5a;
 
-  --gold-300:   #9c7a23;
-  --gold-400:   #8a6c1e;
-  --gold:       #876618;
-  --gold-strong:#876618;
-  --gold-600:   #6e521a;
-  --gold-soft:  rgba(156, 122, 35, 0.10);
+  --gold-300:   #e8c97a;
+  --gold-400:   #d4ad4f;
+  --gold:       #c9a84c;
+  --gold-strong:#c9a84c;
+  --gold-600:   #a8883c;
+  --gold-soft:  rgba(201, 168, 76, 0.08);
 
-  --danger:     #c0392b;
-  --danger-bg:  rgba(192, 57, 43, 0.08);
-  --success:    #1e7e4f;
-  --warning:    #b8860b;
-  --info:       #2a6fb0;
+  --danger:     #d32f2f;
+  --danger-bg:  rgba(211, 47, 47, 0.10);
+  --success:    #388e3c;
+  --warning:    #f57c00;
+  --info:       #1976d2;
 
-  --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   --radius: 8px;
+}
+
+[data-theme='bento'] {
+  --bg:       #ffffff;
+  --surface:  #f5f5f5;
+  --surface-2:#eeeeee;
+  --border:   #e0e0e0;
+  --border-hover: #000000;
+
+  --text:       #000000;
+  --text-muted: #666666;
+
+  --gold-300:   #333333;
+  --gold-400:   #1a1a1a;
+  --gold:       #000000;
+  --gold-strong:#000000;
+  --gold-600:   #4a4a4a;
+  --gold-soft:  rgba(0, 0, 0, 0.05);
+
+  --danger:     #d32f2f;
+  --danger-bg:  rgba(211, 47, 47, 0.08);
+  --success:    #388e3c;
+  --warning:    #f57c00;
+  --info:       #1976d2;
+
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --radius: 4px;
 }
 
 * { box-sizing: border-box; }
