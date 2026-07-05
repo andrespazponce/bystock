@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import { Navigate } from 'react-router-dom'
 import { useAuth } from '../auth/AuthContext'
 
 // Envuelve rutas que requieren sesión. Mientras se resuelve el arranque

@@ -1,6 +1,4 @@
 import type { ReactNode } from 'react'
-import { Navigate } from 'react-router-dom'
-import { useAuth } from '../auth/AuthContext'
 
 /**
  * Ruta protegida que además exige `is_staff = true`.
